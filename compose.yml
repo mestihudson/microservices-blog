@@ -15,3 +15,14 @@ services:
     - 3000:3000
     networks:
     - blog
+
+  posts:
+    image: node:14-alpine
+    entrypoint: sh -c 'yarn install && yarn start; tail -f'
+    working_dir: /ws/posts
+    volumes:
+    - .:/ws
+    ports:
+    - 4000:4000
+    networks:
+    - blog
