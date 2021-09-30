@@ -1,0 +1,17 @@
+version: '3.9'
+
+networks:
+  blog:
+    name: blog
+
+services:
+  client:
+    image: node:14-alpine
+    entrypoint: sh -c 'yarn install && yarn start; tail -f'
+    working_dir: /ws/client
+    volumes:
+    - .:/ws
+    ports:
+    - 3000:3000
+    networks:
+    - blog
