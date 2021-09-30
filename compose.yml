@@ -38,6 +38,17 @@ services:
     networks:
     - blog
 
+  query:
+    image: node:14-alpine
+    entrypoint: sh -c 'yarn install && yarn start; tail -f'
+    working_dir: /ws/query
+    volumes:
+    - .:/ws
+    ports:
+    - 4002:4002
+    networks:
+    - blog
+
   event-bus:
     image: node:14-alpine
     entrypoint: sh -c 'yarn install && yarn start; tail -f'
