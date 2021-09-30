@@ -26,3 +26,14 @@ services:
     - 4000:4000
     networks:
     - blog
+
+  comments:
+    image: node:14-alpine
+    entrypoint: sh -c 'yarn install && yarn start; tail -f'
+    working_dir: /ws/comments
+    volumes:
+    - .:/ws
+    ports:
+    - 4001:4001
+    networks:
+    - blog
