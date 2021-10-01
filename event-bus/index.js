@@ -11,6 +11,7 @@ app.post('/events', (req, res) => {
   axios.post('http://posts:4000/events', event)
   axios.post('http://comments:4001/events', event)
   axios.post('http://query:4002/events', event)
+  axios.post('http://moderation:4003/events', event)
 
   res.send({ status: 'OK' })
 })
