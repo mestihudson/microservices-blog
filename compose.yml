@@ -59,3 +59,14 @@ services:
     - 4005:4005
     networks:
     - blog
+
+  moderation:
+    image: node:14-alpine
+    entrypoint: sh -c 'yarn install && yarn start; tail -f'
+    working_dir: /ws/moderation
+    volumes:
+    - .:/ws
+    ports:
+    - 4003:4003
+    networks:
+    - blog
