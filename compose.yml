@@ -6,7 +6,7 @@ networks:
 
 services:
   client:
-    image: node:14-alpine
+    image: node:alpine
     entrypoint: sh -c 'yarn install && yarn start; tail -f'
     working_dir: /ws/client
     volumes:
@@ -17,7 +17,7 @@ services:
     - blog
 
   posts:
-    image: node:14-alpine
+    image: node:alpine
     entrypoint: sh -c 'yarn install && yarn start; tail -f'
     working_dir: /ws/posts
     volumes:
@@ -28,7 +28,7 @@ services:
     - blog
 
   comments:
-    image: node:14-alpine
+    image: node:alpine
     entrypoint: sh -c 'yarn install && yarn start; tail -f'
     working_dir: /ws/comments
     volumes:
@@ -39,7 +39,7 @@ services:
     - blog
 
   query:
-    image: node:14-alpine
+    image: node:alpine
     entrypoint: sh -c 'yarn install && yarn start; tail -f'
     working_dir: /ws/query
     volumes:
@@ -50,7 +50,7 @@ services:
     - blog
 
   event-bus:
-    image: node:14-alpine
+    image: node:alpine
     entrypoint: sh -c 'yarn install && yarn start; tail -f'
     working_dir: /ws/event-bus
     volumes:
@@ -61,7 +61,7 @@ services:
     - blog
 
   moderation:
-    image: node:14-alpine
+    image: node:alpine
     entrypoint: sh -c 'yarn install && yarn start; tail -f'
     working_dir: /ws/moderation
     volumes:
