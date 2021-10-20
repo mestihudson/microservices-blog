@@ -1,0 +1,58 @@
+apiVersion: skaffold/v2beta24
+kind: Config
+deploy:
+  kubectl:
+    manifests:
+    - ./infra/k8s/*
+build:
+  local:
+    push: false
+  artifacts:
+  - image: mestihudson/client
+    context: client
+    docker:
+      dockerfile: Dockerfile
+    sync:
+      manual:
+      - src: 'src/**/*.js'
+        dest: .
+  - image: mestihudson/comments
+    context: comments
+    docker:
+      dockerfile: Dockerfile
+    sync:
+      manual:
+      - src: '*.js'
+        dest: .
+  - image: mestihudson/event-bus
+    context: event-bus
+    docker:
+      dockerfile: Dockerfile
+    sync:
+      manual:
+      - src: '*.js'
+        dest: .
+  - image: mestihudson/moderation
+    context: moderation
+    docker:
+      dockerfile: Dockerfile
+    sync:
+      manual:
+      - src: '*.js'
+        dest: .
+  - image: mestihudson/posts
+    context: posts
+    docker:
+      dockerfile: Dockerfile
+    sync:
+      manual:
+      - src: '*.js'
+        dest: .
+  - image: mestihudson/query
+    context: query
+    docker:
+      dockerfile: Dockerfile
+    sync:
+      manual:
+      - src: '*.js'
+        dest: .
